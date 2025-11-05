@@ -8,7 +8,7 @@ public class Patient
     /// <summary>
     /// Unique identifier for the patient.
     /// </summary>
-    public required int ID { get; set; }
+    public required int Id { get; set; }
 
     /// <summary>
     /// Passport number of the patient.
@@ -23,7 +23,7 @@ public class Patient
     /// <summary>
     /// Gender of the patient.
     /// </summary>
-    public required Sex? Sex { get; set; }
+    public required Sex Sex { get; set; }
 
     /// <summary>
     /// Date of birth of the patient.
@@ -38,12 +38,12 @@ public class Patient
     /// <summary>
     /// Blood type of the patient.
     /// </summary>
-    public required BloodType? BloodType { get; set; }
+    public required BloodType BloodType { get; set; }
 
     /// <summary>
     /// Rh factor of the patient's blood.
     /// </summary>
-    public required RHFactor? RHFactor { get; set; }
+    public required RHFactor RHFactor { get; set; }
 
     /// <summary>
     /// Contact phone number of the patient.

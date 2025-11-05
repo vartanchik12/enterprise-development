@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -16,12 +16,11 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
   </ItemGroup>
 
-
-	<ItemGroup>
-		<ProjectReference Include="..\..\Hospital\Hospital.Domain\Hospital.Domain.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
+  <ItemGroup>
+     <ProjectReference Include="..\..\Hospital\Hospital.Domain\Hospital.Domain.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

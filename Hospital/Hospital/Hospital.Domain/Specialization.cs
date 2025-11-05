@@ -8,7 +8,7 @@ public class Specialization
     /// <summary>
     /// Unique identifier for the specialization.
     /// </summary>
-    public required int ID { get; set; }
+    public required int Id { get; set; }
 
     /// <summary>
     /// Name of the medical specialization.

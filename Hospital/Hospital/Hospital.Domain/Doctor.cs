@@ -8,7 +8,7 @@ public class Doctor
     /// <summary>
     /// Unique identifier for the doctor.
     /// </summary>
-    public required int ID { get; set; }
+    public required int Id { get; set; }
 
     /// <summary>
     /// Passport number of the doctor.
@@ -23,12 +23,12 @@ public class Doctor
     /// <summary>
     /// Year of birth of the doctor.
     /// </summary>
-    public required int BirthYear { get; set; }
+    public required DateOnly BirthDate { get; set; }
 
     /// <summary>
     /// Medical specialization of the doctor.
     /// </summary>
-    public required Specialization? Specialization { get; set; }
+    public required Specialization Specialization { get; set; }
 
     /// <summary>
     /// Years of work experience.

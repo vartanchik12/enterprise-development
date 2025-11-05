@@ -22,7 +22,7 @@ public class HospitalTests(HospitalFixture fixture) : IClassFixture<HospitalFixt
             .ToList();
 
         Assert.Equal(expectedCount, actual.Count());
-        Assert.Equal(expectedFirstId, actual[0].ID);
+        Assert.Equal(expectedFirstId, actual[0].Id);
     }
 
     /// <summary>
@@ -31,21 +31,21 @@ public class HospitalTests(HospitalFixture fixture) : IClassFixture<HospitalFixt
     [Fact]
     public void GetPatientsByDoctorId_OrderedByName_ReturnsCorrectPatients()
     {
-        var DoctorID = 1;
+        var doctorID = 1;
         var expectedCount = 3;
         var expectedId = 3;
 
         var actual = fixture.Appointments
-        .Where(a => a.DoctorId == DoctorID)
+        .Where(a => a.DoctorId == doctorID)
         .Join(fixture.Patients,
              a => a.PatientId,
-             p => p.ID,
+             p => p.Id,
             (a, p) => p)
         .OrderBy(p => p.FullName)
         .ToList();
 
         Assert.Equal(expectedCount, actual.Count());
-        Assert.Equal(expectedId, actual[0].ID);
+        Assert.Equal(expectedId, actual[0].Id);
     }
 
     /// <summary>
@@ -55,8 +55,8 @@ public class HospitalTests(HospitalFixture fixture) : IClassFixture<HospitalFixt
     public void CountFollowUpAppointmentsLastMonth_ReturnsCorrectNumber()
     {
         var expected = 7;
-        var today = new DateTime(2025, 10, 20);
-        var monthAgo = today.AddMonths(-1);
+        var currentDate = new DateTime(2025, 10, 20);
+        var monthAgo = currentDate.AddMonths(-1);
 
         var actual = fixture.Appointments
             .Count(a => a.AppointmentTime >= monthAgo && a.IsFollow);
@@ -71,18 +71,18 @@ public class HospitalTests(HospitalFixture fixture) : IClassFixture<HospitalFixt
     public void GetPatientsOver30WithMultipleDoctors_OrderedByBirthDate_ReturnsCorrectPatients()
     {
         var expected = 2;
-        var today = new DateTime(2025, 10, 20);
-        var ageLimit = today.AddYears(-30);
+        var currentDate = new DateTime(2025, 10, 20);
+        var ageLimit = currentDate.AddYears(-30);
 
         var result = fixture.Patients
             .Where(p => p.BirthDate <= ageLimit)
             .Where(p => fixture.Appointments
-                        .Where(a => a.PatientId == p.ID)
+                        .Where(a => a.PatientId == p.Id)
                         .Select(a => a.DoctorId)
                         .Distinct()
                         .Count() > 1)
             .OrderBy(p => p.BirthDate)
-            .Select(p => p.ID)
+            .Select(p => p.Id)
             .ToList();
 
         Assert.NotNull(result);

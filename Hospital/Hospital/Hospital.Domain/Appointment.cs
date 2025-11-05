@@ -8,7 +8,7 @@ public class Appointment
     /// <summary>
     /// Unique identifier for the appointment.
     /// </summary>
-    public required int ID { get; set; }
+    public required int Id { get; set; }
 
     /// <summary>
     /// Date and time of the appointment.
