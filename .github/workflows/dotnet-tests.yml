@@ -26,10 +26,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: dotnet restore
-        run: dotnet restore ./Airlines/Airlines.sln
+        run: dotnet restore ./Hospital/Hospital.sln
 
       - name: Build solution
-        run: dotnet build ./Airlines/Airlines.sln --no-restore
+        run: dotnet build ./Hospital/Hospital.sln --no-restore
 
       - name: Run tests
-        run: dotnet test ./Airlines/Airlines.Tests/Airlines.Tests.csproj --no-build --verbosity detailed
+        run: dotnet test ./Hospital/Hospital.Tests/Hospital.Tests.csproj --no-build --verbosity detailed
