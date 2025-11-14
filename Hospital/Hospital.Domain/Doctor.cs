@@ -21,7 +21,7 @@ public class Doctor
     public required string FullName { get; set; }
 
     /// <summary>
-    /// Year of birth of the doctor.
+    /// Date of birth of the doctor.
     /// </summary>
     public required DateOnly BirthDate { get; set; }
 
@@ -33,5 +33,5 @@ public class Doctor
     /// <summary>
     /// Years of work experience.
     /// </summary>
-    public required int WorkExperience { get; set; }
+    public int? WorkExperience { get; set; }
 }

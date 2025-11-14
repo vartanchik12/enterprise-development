@@ -28,25 +28,25 @@ public class Patient
     /// <summary>
     /// Date of birth of the patient.
     /// </summary>
-    public required DateTime BirthDate { get; set; }
+    public required DateOnly BirthDate { get; set; }
 
     /// <summary>
     /// Residential address of the patient.
     /// </summary>
-    public required string Address { get; set; }
+    public string? Address { get; set; }
 
     /// <summary>
     /// Blood type of the patient.
     /// </summary>
-    public required BloodType BloodType { get; set; }
+    public BloodType? BloodType { get; set; }
 
     /// <summary>
     /// Rh factor of the patient's blood.
     /// </summary>
-    public required RHFactor RHFactor { get; set; }
+    public RHFactor? RHFactor { get; set; }
 
     /// <summary>
     /// Contact phone number of the patient.
     /// </summary>
-    public required string PhoneNumber { get; set; }
+    public string? PhoneNumber { get; set; }
 }

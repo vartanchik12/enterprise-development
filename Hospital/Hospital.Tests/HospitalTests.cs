@@ -1,12 +1,11 @@
-using Hospital.Domain;
-using System.Net.WebSockets;
+using Hospital.Domain.Data;
 
 namespace Hospital.Tests;
 
 /// <summary>
 /// Unit tests for Hospital.Models.
 /// </summary>
-public class HospitalTests(HospitalFixture fixture) : IClassFixture<HospitalFixture>
+public class HospitalTests(DataSeed fixture) : IClassFixture<DataSeed>
 {
     /// <summary>
     /// Test that count doctors with at least 10 years of expirience.
@@ -21,7 +20,7 @@ public class HospitalTests(HospitalFixture fixture) : IClassFixture<HospitalFixt
             .Where(doctor => doctor.WorkExperience >= 10)
             .ToList();
 
-        Assert.Equal(expectedCount, actual.Count());
+        Assert.Equal(expectedCount, actual.Count);
         Assert.Equal(expectedFirstId, actual[0].Id);
     }
 
@@ -44,7 +43,7 @@ public class HospitalTests(HospitalFixture fixture) : IClassFixture<HospitalFixt
         .OrderBy(p => p.FullName)
         .ToList();
 
-        Assert.Equal(expectedCount, actual.Count());
+        Assert.Equal(expectedCount, actual.Count);
         Assert.Equal(expectedId, actual[0].Id);
     }
 
@@ -71,7 +70,7 @@ public class HospitalTests(HospitalFixture fixture) : IClassFixture<HospitalFixt
     public void GetPatientsOver30WithMultipleDoctors_OrderedByBirthDate_ReturnsCorrectPatients()
     {
         var expected = 2;
-        var currentDate = new DateTime(2025, 10, 20);
+        var currentDate = new DateOnly(2025, 10, 20);
         var ageLimit = currentDate.AddYears(-30);
 
         var result = fixture.Patients
