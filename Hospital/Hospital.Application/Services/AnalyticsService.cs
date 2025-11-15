@@ -12,11 +12,11 @@ namespace Hospital.Application.Services;
 /// Application service for analytics on hospital data.
 /// Provides methods to query appointments, doctors, and patients with specific criteria.
 /// </summary>
-public class AnalyticsService (
-    IRepository<Appointment, int> appointmentRepository, 
-    IRepository<Doctor, int> doctorRepository, 
-    IRepository<Patient, int> patientRepository, 
-    IMapper mapper) 
+public class AnalyticsService(
+    IRepository<Appointment, int> appointmentRepository,
+    IRepository<Doctor, int> doctorRepository,
+    IRepository<Patient, int> patientRepository,
+    IMapper mapper)
     : IAnalyticsService
 {
     /// <summary>

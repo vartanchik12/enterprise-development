@@ -3,7 +3,6 @@ using Hospital.Application.Contracts.Doctors;
 using Hospital.Application.Contracts.Specializations;
 using Hospital.Domain;
 using Hospital.Domain.Model;
-using System.Numerics;
 
 namespace Hospital.Application.Services;
 
