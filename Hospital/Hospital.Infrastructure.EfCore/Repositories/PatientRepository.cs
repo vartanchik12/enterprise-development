@@ -18,7 +18,9 @@ public class PatientRepository(HospitalDbContext context) : IRepository<Patient,
     public async Task<Patient> Create(Patient entity)
     {
         var result = await context.Patients.AddAsync(entity);
+
         await context.SaveChangesAsync();
+
         return result.Entity;
     }
 
@@ -35,6 +37,7 @@ public class PatientRepository(HospitalDbContext context) : IRepository<Patient,
             return false;
 
         context.Patients.Remove(entity);
+
         await context.SaveChangesAsync();
 
         return true;
@@ -67,7 +70,9 @@ public class PatientRepository(HospitalDbContext context) : IRepository<Patient,
     public async Task<Patient> Update(Patient entity)
     {
         context.Patients.Update(entity);
+
         await context.SaveChangesAsync();
+
         return entity;
     }
 }

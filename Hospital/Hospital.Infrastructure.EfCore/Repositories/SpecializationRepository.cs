@@ -18,7 +18,9 @@ public class SpecializationRepository(HospitalDbContext context) : IRepository<S
     public async Task<Specialization> Create(Specialization entity)
     {
         var result = await context.Specializations.AddAsync(entity);
+
         await context.SaveChangesAsync();
+
         return result.Entity;
     }
 
@@ -35,6 +37,7 @@ public class SpecializationRepository(HospitalDbContext context) : IRepository<S
             return false;
 
         context.Specializations.Remove(entity);
+
         await context.SaveChangesAsync();
 
         return true;
@@ -67,7 +70,9 @@ public class SpecializationRepository(HospitalDbContext context) : IRepository<S
     public async Task<Specialization> Update(Specialization entity)
     {
         context.Specializations.Update(entity);
+
         await context.SaveChangesAsync();
+
         return entity;
     }
 }
