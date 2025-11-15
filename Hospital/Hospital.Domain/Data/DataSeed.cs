@@ -1,4 +1,6 @@
-﻿namespace Hospital.Domain.Data;
+﻿using Hospital.Domain.Model;
+
+namespace Hospital.Domain.Data;
 
 /// <summary>
 /// Seeds initial demo data for the hospital system.

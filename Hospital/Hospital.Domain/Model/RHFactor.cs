@@ -1,4 +1,4 @@
-﻿namespace Hospital.Domain;
+﻿namespace Hospital.Domain.Model;
 
 /// <summary>
 /// Rh factor blood group classification.

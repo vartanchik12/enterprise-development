@@ -5,7 +5,7 @@ namespace Hospital.Tests;
 /// <summary>
 /// Unit tests for Hospital.Models.
 /// </summary>
-public class HospitalTests(DataSeed fixture) : IClassFixture<DataSeed>
+public class HospitalTests(DataSeed dataSeeder) : IClassFixture<DataSeed>
 {
     /// <summary>
     /// Test that count doctors with at least 10 years of expirience.
@@ -16,7 +16,7 @@ public class HospitalTests(DataSeed fixture) : IClassFixture<DataSeed>
         var expectedCount = 8;
         var expectedFirstId = 1;
 
-        var actual = fixture.Doctors
+        var actual = dataSeeder.Doctors
             .Where(doctor => doctor.WorkExperience >= 10)
             .ToList();
 
@@ -34,9 +34,9 @@ public class HospitalTests(DataSeed fixture) : IClassFixture<DataSeed>
         var expectedCount = 3;
         var expectedId = 3;
 
-        var actual = fixture.Appointments
+        var actual = dataSeeder.Appointments
         .Where(a => a.DoctorId == doctorID)
-        .Join(fixture.Patients,
+        .Join(dataSeeder.Patients,
              a => a.PatientId,
              p => p.Id,
             (a, p) => p)
@@ -57,7 +57,7 @@ public class HospitalTests(DataSeed fixture) : IClassFixture<DataSeed>
         var currentDate = new DateTime(2025, 10, 20);
         var monthAgo = currentDate.AddMonths(-1);
 
-        var actual = fixture.Appointments
+        var actual = dataSeeder.Appointments
             .Count(a => a.AppointmentTime >= monthAgo && a.IsFollow);
 
         Assert.Equal(expected, actual);
@@ -73,9 +73,9 @@ public class HospitalTests(DataSeed fixture) : IClassFixture<DataSeed>
         var currentDate = new DateOnly(2025, 10, 20);
         var ageLimit = currentDate.AddYears(-30);
 
-        var result = fixture.Patients
+        var result = dataSeeder.Patients
             .Where(p => p.BirthDate <= ageLimit)
-            .Where(p => fixture.Appointments
+            .Where(p => dataSeeder.Appointments
                         .Where(a => a.PatientId == p.Id)
                         .Select(a => a.DoctorId)
                         .Distinct()
@@ -100,7 +100,7 @@ public class HospitalTests(DataSeed fixture) : IClassFixture<DataSeed>
         var today = new DateTime(2025, 10, 25);
         var officeNumber = 101;
 
-        var resultAppointmentTimes = fixture.Appointments
+        var resultAppointmentTimes = dataSeeder.Appointments
             .Where(a => a.RoomNumber == officeNumber
                         && a.AppointmentTime.Year == today.Year
                         && a.AppointmentTime.Month == today.Month)
