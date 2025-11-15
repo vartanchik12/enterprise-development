@@ -23,6 +23,10 @@ public class AppointmentService(IRepository<Appointment, int> repository, IRepos
     {
         var entity = mapper.Map<Appointment>(dto);
 
+        var entities = await repository.ReadAll();
+        var lastId = entities.Any() ? entities.Max(c => c.Id) : 0;
+        entity.Id = lastId + 1;
+
         var result = await repository.Create(entity);
 
         return mapper.Map<AppointmentDto>(result);

@@ -84,6 +84,10 @@ public class HospitalDbContext(DbContextOptions options) : DbContext(options)
                 .IsRequired()
                 .HasElementName("birth_date");
 
+            builder.Property(b => b.SpecializationId)
+                .IsRequired()
+                .HasElementName("specialization_id");
+
             builder.Property(b => b.WorkExperience)
                 .HasElementName("work_experience");
         });
@@ -107,7 +111,6 @@ public class HospitalDbContext(DbContextOptions options) : DbContext(options)
 
             builder.Property(b => b.Sex)
                 .IsRequired()
-                .HasConversion<string>()
                 .HasElementName("sex");
 
             builder.Property(b => b.BirthDate)
@@ -119,11 +122,9 @@ public class HospitalDbContext(DbContextOptions options) : DbContext(options)
                 .HasElementName("address");
 
             builder.Property(b => b.BloodType)
-                .HasConversion<string>()
                 .HasElementName("blood_type");
 
             builder.Property(b => b.RHFactor)
-                .HasConversion<string>()
                 .HasElementName("rh_factor");
 
             builder.Property(b => b.PhoneNumber)
@@ -143,5 +144,7 @@ public class HospitalDbContext(DbContextOptions options) : DbContext(options)
                 .HasMaxLength(100)
                 .HasElementName("name");
         });
+
+        Database.AutoTransactionBehavior = AutoTransactionBehavior.Never;
     }
 }

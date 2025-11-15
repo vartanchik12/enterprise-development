@@ -3,6 +3,7 @@ using Hospital.Application.Contracts.Doctors;
 using Hospital.Application.Contracts.Specializations;
 using Hospital.Domain;
 using Hospital.Domain.Model;
+using System.Numerics;
 
 namespace Hospital.Application.Services;
 
@@ -21,8 +22,9 @@ public class DoctorService(IRepository<Doctor, int> repository, IRepository<Spec
     {
         var entity = mapper.Map<Doctor>(dto);
 
-        entity.Specialization = await specializationRepository.Read(dto.SpecializationId) 
-            ?? throw new KeyNotFoundException($"Specialization with Id {dto.SpecializationId} not found");
+        var entities = await repository.ReadAll();
+        var lastId = entities.Any() ? entities.Max(c => c.Id) : 0;
+        entity.Id = lastId + 1;
 
         var result = await repository.Create(entity);
 
@@ -70,7 +72,10 @@ public class DoctorService(IRepository<Doctor, int> repository, IRepository<Spec
         var entity = await repository.Read(doctorId)
                      ?? throw new KeyNotFoundException($"Entity with Id {doctorId} not found");
 
-        return mapper.Map<SpecializationDto>(entity.Specialization);
+        var specialization = await specializationRepository.Read(entity.SpecializationId)
+            ?? throw new KeyNotFoundException($"Specialization {entity.SpecializationId} not found");
+
+        return mapper.Map<SpecializationDto>(specialization);
     }
 
     /// <summary>

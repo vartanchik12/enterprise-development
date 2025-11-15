@@ -26,9 +26,9 @@ public class Doctor
     public required DateOnly BirthDate { get; set; }
 
     /// <summary>
-    /// Medical specialization of the doctor.
+    /// Identifier for medical specialization of the doctor.
     /// </summary>
-    public required Specialization Specialization { get; set; }
+    public required int SpecializationId { get; set; }
 
     /// <summary>
     /// Years of work experience.

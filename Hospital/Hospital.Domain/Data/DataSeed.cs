@@ -29,16 +29,16 @@ public class DataSeed
     /// </summary>
     public List<Doctor> Doctors { get; } =
     [
-        new Doctor { Id = 1, Passport = "4501 123456", FullName = "Иванов Сергей Петрович", BirthDate = new DateOnly(1975, 3, 15), Specialization = Specializations[0], WorkExperience = 15 },
-        new Doctor { Id = 2, Passport = "4502 234567", FullName = "Петрова Анна Владимировна", BirthDate = new DateOnly(1980, 7, 22), Specialization = Specializations[1], WorkExperience = 12 },
-        new Doctor { Id = 3, Passport = "4503 345678", FullName = "Сидоров Алексей Иванович", BirthDate = new DateOnly(1982, 11, 8), Specialization = Specializations[2], WorkExperience = 10 },
-        new Doctor { Id = 4, Passport = "4504 456789", FullName = "Кузнецова Мария Сергеевна", BirthDate = new DateOnly(1978, 5, 30), Specialization = Specializations[3], WorkExperience = 14 },
-        new Doctor { Id = 5, Passport = "4505 567890", FullName = "Васильев Дмитрий Николаевич", BirthDate = new DateOnly(1985, 9, 12), Specialization = Specializations[4], WorkExperience = 8 },
-        new Doctor { Id = 6, Passport = "4506 678901", FullName = "Николаева Ольга Борисовна", BirthDate = new DateOnly(1970, 12, 3), Specialization = Specializations[5], WorkExperience = 20 },
-        new Doctor { Id = 7, Passport = "4507 789012", FullName = "Федоров Игорь Васильевич", BirthDate = new DateOnly(1983, 2, 28), Specialization = Specializations[6], WorkExperience = 9 },
-        new Doctor { Id = 8, Passport = "4508 890123", FullName = "Алексеева Татьяна Дмитриевна", BirthDate = new DateOnly(1979, 6, 17), Specialization = Specializations[7], WorkExperience = 13 },
-        new Doctor { Id = 9, Passport = "4509 901234", FullName = "Павлов Андрей Викторович", BirthDate = new DateOnly(1981, 4, 5), Specialization = Specializations[8], WorkExperience = 11 },
-        new Doctor { Id = 10, Passport = "4510 012345", FullName = "Семенова Елена Александровна", BirthDate = new DateOnly(1976, 8, 25), Specialization = Specializations[9], WorkExperience = 16 }
+        new Doctor { Id = 1, Passport = "4501 123456", FullName = "Иванов Сергей Петрович", BirthDate = new DateOnly(1975, 3, 15), SpecializationId = 1, WorkExperience = 15 },
+        new Doctor { Id = 2, Passport = "4502 234567", FullName = "Петрова Анна Владимировна", BirthDate = new DateOnly(1980, 7, 22), SpecializationId = 2, WorkExperience = 12 },
+        new Doctor { Id = 3, Passport = "4503 345678", FullName = "Сидоров Алексей Иванович", BirthDate = new DateOnly(1982, 11, 8), SpecializationId = 3, WorkExperience = 10 },
+        new Doctor { Id = 4, Passport = "4504 456789", FullName = "Кузнецова Мария Сергеевна", BirthDate = new DateOnly(1978, 5, 30), SpecializationId = 4, WorkExperience = 14 },
+        new Doctor { Id = 5, Passport = "4505 567890", FullName = "Васильев Дмитрий Николаевич", BirthDate = new DateOnly(1985, 9, 12), SpecializationId = 5, WorkExperience = 8 },
+        new Doctor { Id = 6, Passport = "4506 678901", FullName = "Николаева Ольга Борисовна", BirthDate = new DateOnly(1970, 12, 3), SpecializationId = 6, WorkExperience = 20 },
+        new Doctor { Id = 7, Passport = "4507 789012", FullName = "Федоров Игорь Васильевич", BirthDate = new DateOnly(1983, 2, 28), SpecializationId = 7, WorkExperience = 9 },
+        new Doctor { Id = 8, Passport = "4508 890123", FullName = "Алексеева Татьяна Дмитриевна", BirthDate = new DateOnly(1979, 6, 17), SpecializationId = 8, WorkExperience = 13 },
+        new Doctor { Id = 9, Passport = "4509 901234", FullName = "Павлов Андрей Викторович", BirthDate = new DateOnly(1981, 4, 5), SpecializationId = 9, WorkExperience = 11 },
+        new Doctor { Id = 10, Passport = "4510 012345", FullName = "Семенова Елена Александровна", BirthDate = new DateOnly(1976, 8, 25), SpecializationId = 10, WorkExperience = 16 }
     ];
 
     /// <summary>

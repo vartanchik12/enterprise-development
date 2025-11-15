@@ -18,8 +18,7 @@ public class HospitalProfile : Profile
         CreateMap<AppointmentCreateUpdateDto, Appointment>();
 
         CreateMap<Doctor, DoctorDto>();
-        CreateMap<DoctorCreateUpdateDto, Doctor>()
-            .ForMember(dest => dest.Specialization, opt => opt.Ignore());
+        CreateMap<DoctorCreateUpdateDto, Doctor>();
 
         CreateMap<Patient, PatientDto>();
         CreateMap<PatientCreateUpdateDto, Patient>();

@@ -21,6 +21,10 @@ public class PatientService(IRepository<Patient, int> repository, IMapper mapper
     {
         var entity = mapper.Map<Patient>(dto);
 
+        var entities = await repository.ReadAll();
+        var lastId = entities.Any() ? entities.Max(c => c.Id) : 0;
+        entity.Id = lastId + 1;
+
         var result = await repository.Create(entity);
 
         return mapper.Map<PatientDto>(result);
