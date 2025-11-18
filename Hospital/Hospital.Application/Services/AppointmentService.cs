@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using Hospital.Application.Contracts.Appointments;
-using Hospital.Application.Contracts.Doctors;
-using Hospital.Application.Contracts.Patients;
 using Hospital.Domain;
 using Hospital.Domain.Model;
 
@@ -9,9 +7,9 @@ namespace Hospital.Application.Services;
 
 /// <summary>
 /// Application service for managing <see cref="Appointment"/> entities.
-/// Implements basic CRUD operations and provides access to associated doctors and patients.
+/// Implements basic CRUD operations.
 /// </summary>
-public class AppointmentService(IRepository<Appointment, int> repository, IRepository<Doctor, int> doctorRepository, IRepository<Patient, int> patientRepository, IMapper mapper) 
+public class AppointmentService(IRepository<Appointment, int> repository, IMapper mapper)
     : IAppointmentService
 {
     /// <summary>
@@ -64,27 +62,30 @@ public class AppointmentService(IRepository<Appointment, int> repository, IRepos
     }
 
     /// <summary>
-    /// Retrieves the doctor associated with a given appointment.
+    /// Retrieves all appointments for the specified doctor.
     /// </summary>
-    /// <param name="appointmentId">Identifier of the appointment.</param>
-    /// <returns>The doctor DTO linked to the appointment.</returns>
-    public async Task<DoctorDto> GetDoctor(int appointmentId)
+    /// <param name="doctorId">Identifier of the doctor.</param>
+    /// <returns>List of appointments for the doctor.</returns>
+    public async Task<IList<AppointmentDto>> GetAppointmentsByDoctorId(int doctorId)
     {
-        var entity = await repository.Read(appointmentId) ?? throw new KeyNotFoundException($"Entity with Id {appointmentId} not found");
-
-        return mapper.Map<DoctorDto>(await doctorRepository.Read(entity.DoctorId));
+        var list = await repository.ReadAll();
+        return mapper.Map<IList<AppointmentDto>>(list
+            .Where(x => x.DoctorId == doctorId)
+            .ToList());
     }
 
     /// <summary>
-    /// Retrieves the patient associated with a given appointment.
+    /// Retrieves all appointments for the specified patient.
     /// </summary>
-    /// <param name="appointmentId">Identifier of the appointment.</param>
-    /// <returns>The patient DTO linked to the appointment.</returns>
-    public async Task<PatientDto> GetPatient(int appointmentId)
+    /// <param name="patientId">Identifier of the patient.</param>
+    /// <returns>List of appointments for the patient.</returns>
+    public async Task<IList<AppointmentDto>> GetAppointmentsByPatientId(int patientId)
     {
-        var entity = await repository.Read(appointmentId) ?? throw new KeyNotFoundException($"Entity with Id {appointmentId} not found");
+        var list = await repository.ReadAll();
 
-        return mapper.Map<PatientDto>(await patientRepository.Read(entity.PatientId));
+        return mapper.Map<IList<AppointmentDto>>(list
+            .Where(x => x.PatientId == patientId)
+            .ToList());
     }
 
     /// <summary>

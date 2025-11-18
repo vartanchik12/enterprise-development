@@ -1,7 +1,4 @@
-﻿using Hospital.Application.Contracts.Doctors;
-using Hospital.Application.Contracts.Patients;
-
-namespace Hospital.Application.Contracts.Appointments;
+﻿namespace Hospital.Application.Contracts.Appointments;
 
 /// <summary>
 /// Application service interface for managing appointments.
@@ -10,16 +7,16 @@ namespace Hospital.Application.Contracts.Appointments;
 public interface IAppointmentService : IApplicationService<AppointmentDto, AppointmentCreateUpdateDto, int>
 {
     /// <summary>
-    /// Retrieves the doctor associated with the specified appointment.
+    /// Retrieves all appointments for the specified doctor.
     /// </summary>
-    /// <param name="appointmentId">The identifier of the appointment.</param>
-    /// <returns>The doctor for the appointment.</returns>
-    public Task<DoctorDto> GetDoctor(int appointmentId);
+    /// <param name="doctorId">Identifier of the doctor.</param>
+    /// <returns>List of appointments for the doctor.</returns>
+    public Task<IList<AppointmentDto>> GetAppointmentsByDoctorId(int doctorId);
 
     /// <summary>
-    /// Retrieves the patient associated with the specified appointment.
+    /// Retrieves all appointments for the specified patient.
     /// </summary>
-    /// <param name="appointmentId">The identifier of the appointment.</param>
-    /// <returns>The patient for the appointment.</returns>
-    public Task<PatientDto> GetPatient(int appointmentId);
+    /// <param name="patientId">Identifier of the patient.</param>
+    /// <returns>List of appointments for the patient.</returns>
+    public Task<IList<AppointmentDto>> GetAppointmentsByPatientId(int patientId);
 }

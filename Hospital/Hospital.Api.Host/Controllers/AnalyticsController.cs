@@ -19,7 +19,7 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
     /// Retrieves all doctors who have at least 10 years of work experience.
     /// </summary>
     /// <returns>List of doctors with a minimum of 10 years of experience.</returns>
-    [HttpGet("Doctors/Experienced")]
+    [HttpGet("doctors-by-experience")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]
     public async Task<ActionResult<List<DoctorDto>>> GetDoctorsWithAtLeast10YearsExperience()
@@ -39,11 +39,11 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
     }
 
     /// <summary>
-    /// Retrieves all patients associated with a specific doctor.
+    /// Retrieves all patients who have appointments with a specific doctor ordered by full name.
     /// </summary>
     /// <param name="doctorId">Identifier of the doctor.</param>
     /// <returns>List of patients assigned to the given doctor.</returns>
-    [HttpGet("Doctors/{doctorId}/Patients")]
+    [HttpGet("patients-by-doctor")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     [ProducesResponseType(500)]
@@ -70,7 +70,7 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
     /// Retrieves all follow-up appointments that occurred in the last month.
     /// </summary>
     /// <returns>List of follow-up appointments from the previous month.</returns>
-    [HttpGet("Appointments/FollowUps/LastMonth")]
+    [HttpGet("followup-appointments-last-month")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]
     public async Task<ActionResult<List<AppointmentDto>>> GetFollowUpAppointmentsForLastMonth()
@@ -93,7 +93,7 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
     /// Retrieves all patients over 30 years old who have appointments with multiple doctors.
     /// </summary>
     /// <returns>List of patients over 30 with appointments with multiple doctors.</returns>
-    [HttpGet("Patients/Over30/MultipleDoctors")]
+    [HttpGet("patients-over-30-multiple-doctors")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]
     public async Task<ActionResult<List<PatientDto>>> GetPatientsOver30YearsWithMultipleDoctors()
@@ -117,7 +117,7 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
     /// </summary>
     /// <param name="officeNumber">The office or room number.</param>
     /// <returns>List of appointments in the specified office for the current month.</returns>
-    [HttpGet("Appointments/ByOffice/{officeNumber}/CurrentMonth")]
+    [HttpGet("appointments-by-office-current-month")]
     [ProducesResponseType(200)]
     [ProducesResponseType(500)]
     public async Task<ActionResult<List<AppointmentDto>>> GetAppointmentsByOfficeForCurrentMonth(int officeNumber)
