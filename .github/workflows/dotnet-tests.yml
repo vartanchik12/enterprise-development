@@ -4,12 +4,9 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
     branches: 
-      - lab1, lab2, lab3, lab4
-      - main
+    - main
   push:
-    branches:
-      - lab1, lab2, lab3, lab4
-      - main
+    branches: [lab1, lab2, lab3, lab4, main]
 
 jobs:
   build-and-test:
