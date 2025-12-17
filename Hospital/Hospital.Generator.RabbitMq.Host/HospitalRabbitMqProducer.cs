@@ -37,7 +37,7 @@ public class HospitalRabbitMqProducer(IConfiguration configuration, IConnection 
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Exception occured during sending a batch of {count} contracts to {queue}", batch.Count, _queueName);
+            logger.LogError(ex, "Exception occurred during sending a batch of {count} contracts to {queue}", batch.Count, _queueName);
         }
     }
 }

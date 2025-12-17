@@ -38,8 +38,6 @@ public class HospitalRabbitMqConsumer(IConnection connection, IServiceScopeFacto
         consumer.ReceivedAsync += async (_, ea) => await ReceiveMessage(ea, stoppingToken);
 
         await channel.BasicConsumeAsync(queue: _queueName, autoAck: true, consumer: consumer, cancellationToken: stoppingToken);
-
-        await Task.Delay(Timeout.Infinite, stoppingToken);
     }
 
     /// <summary>
@@ -75,9 +73,13 @@ public class HospitalRabbitMqConsumer(IConnection connection, IServiceScopeFacto
                 }
             }
         }
+        catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
+        {
+            logger.LogInformation("Message processing cancelled for queue {queue}", _queueName);
+        }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Exception occured during receiving contracts from {queue}", _queueName);
+            logger.LogError(ex, "Exception occurred during receiving contracts from {queue}", _queueName);
         }
     }
 }
