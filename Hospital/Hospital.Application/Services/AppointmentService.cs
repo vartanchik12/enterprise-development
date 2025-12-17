@@ -9,7 +9,7 @@ namespace Hospital.Application.Services;
 /// Application service for managing <see cref="Appointment"/> entities.
 /// Implements basic CRUD operations.
 /// </summary>
-public class AppointmentService(IRepository<Appointment, int> repository, IMapper mapper)
+public class AppointmentService(IRepository<Appointment, int> repository, IRepository<Doctor, int> doctorRepository, IRepository<Patient, int> patientRepository, IMapper mapper)
     : IAppointmentService
 {
     /// <summary>
@@ -19,6 +19,10 @@ public class AppointmentService(IRepository<Appointment, int> repository, IMappe
     /// <returns>The created appointment as DTO.</returns>
     public async Task<AppointmentDto> Create(AppointmentCreateUpdateDto dto)
     {
+        _ = await doctorRepository.Read(dto.DoctorId) ?? throw new KeyNotFoundException($"Doctor with Id {dto.DoctorId} not found");
+
+        _ = await patientRepository.Read(dto.PatientId) ?? throw new KeyNotFoundException($"Patient with Id {dto.PatientId} not found");
+
         var entity = mapper.Map<Appointment>(dto);
 
         var entities = await repository.ReadAll();

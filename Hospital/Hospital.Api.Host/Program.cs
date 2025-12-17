@@ -10,6 +10,7 @@ using Hospital.Domain.Data;
 using Hospital.Domain.Model;
 using Hospital.Infrastructure.EfCore;
 using Hospital.Infrastructure.EfCore.Repositories;
+using Hospital.Infrastructure.RabbitMq;
 using Hospital.ServiceDefaults;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
@@ -60,6 +61,9 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.AddMongoDBClient("hospital");
+
+builder.Services.AddHostedService<HospitalRabbitMqConsumer>();
+builder.AddRabbitMQClient("hospital-rabbitmq");
 
 builder.Services.AddDbContext<HospitalDbContext>((services, o) =>
 {
