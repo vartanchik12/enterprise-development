@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.ServiceDefaults", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Infrastructure.RabbitMq", "Hospital.Infrastructure.RabbitMq\Hospital.Infrastructure.RabbitMq.csproj", "{21931511-2762-4A10-A13E-5DF62AE06D68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Generator.RabbitMq.Host", "Hospital.Generator.RabbitMq.Host\Hospital.Generator.RabbitMq.Host.csproj", "{70257585-3B90-4925-8718-3C2EFC72FC09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{21931511-2762-4A10-A13E-5DF62AE06D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21931511-2762-4A10-A13E-5DF62AE06D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21931511-2762-4A10-A13E-5DF62AE06D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70257585-3B90-4925-8718-3C2EFC72FC09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70257585-3B90-4925-8718-3C2EFC72FC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70257585-3B90-4925-8718-3C2EFC72FC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70257585-3B90-4925-8718-3C2EFC72FC09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
